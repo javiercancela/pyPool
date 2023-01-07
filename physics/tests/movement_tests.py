@@ -4,14 +4,14 @@ import math
 
 
 def test_no_movement():
-    ball = Ball(Position(0, 0))
+    ball = Ball(1, Position(0, 0))
     ball.set_velocity(Velocity(0, 0))
     ball.update(1000)
     assert ball.get_position() == Position(0, 0)
 
 
 def test_movement():
-    ball = Ball(Position(300, 400))
+    ball = Ball(1, Position(300, 400))
     ball.set_velocity(Velocity(5, math.atan(3 / 4)))
     ball.update(1000)
     new_x_pos = 4 * 1000 + 300
@@ -20,15 +20,15 @@ def test_movement():
 
 
 def test_distance():
-    ball1 = Ball(Position(0, 0))
-    ball2 = Ball(Position(150, 0))
+    ball1 = Ball(1, Position(0, 0))
+    ball2 = Ball(2, Position(150, 0))
     assert ball1.get_distance_from_ball(ball2) == 93
 
-    ball1 = Ball(Position(0, 0))
-    ball2 = Ball(Position(0, 150))
+    ball1 = Ball(1, Position(0, 0))
+    ball2 = Ball(2, Position(0, 150))
     assert ball1.get_distance_from_ball(ball2) == 93
 
-    ball1 = Ball(Position(0, 0))
-    ball2 = Ball(Position(100, 200))
+    ball1 = Ball(1, Position(0, 0))
+    ball2 = Ball(2, Position(100, 200))
     assert ball1.get_distance_from_ball(ball2) == math.sqrt(50000) - Ball.DIAMETER_IN_MM
 

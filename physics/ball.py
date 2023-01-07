@@ -8,7 +8,8 @@ class Ball:
     DIAMETER_IN_MM = 57
     MASS_IN_GR = 160
 
-    def __init__(self, position: Position):
+    def __init__(self, number: int, position: Position):
+        self._number = number
         self._position = position
         self._velocity = Velocity(0, 0)
 
@@ -34,7 +35,7 @@ class Ball:
         """
         return self.get_position().get_distance(ball.get_position()) - Ball.DIAMETER_IN_MM
 
-    def collides(self, ball: "Ball"):
+    def get_collision(self, ball: "Ball"):
         """
         To detect collisions with another ball, we just calculate the distance between balls
         :param ball: the other ball
